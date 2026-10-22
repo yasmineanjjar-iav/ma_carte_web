@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carte du site de l'IAV Hassan II – Rabat</title>
+  <title>IAV Hassan II – Plan d'accès | Rabat</title>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -14,7 +14,6 @@
     :root {
       --vert: #1f6b3a;
       --vert-fonce: #124a27;
-      --vert-clair: #e8f3ec;
       --or: #c9a227;
       --texte: #22302a;
       --gris: #6b7a72;
@@ -34,27 +33,16 @@
       background: linear-gradient(135deg, var(--vert-fonce), var(--vert));
       color: #fff;
       text-align: center;
-      padding: 40px 20px 70px;
+      padding: 48px 20px 80px;
       border-bottom: 5px solid var(--or);
     }
-    header .badge {
-      display: inline-block;
-      background: rgba(255,255,255,.15);
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 20px;
-      padding: 4px 16px;
-      font-size: .85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    header h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 4vw, 2.4rem); }
-    header p  { margin: 0; opacity: .9; font-size: 1.05rem; }
+    header h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: .3px; }
+    header p  { margin: 0; opacity: .92; font-size: 1.05rem; }
 
     /* ---------- Contenu ---------- */
     main {
       max-width: 1100px;
-      margin: -45px auto 40px;
+      margin: -50px auto 40px;
       padding: 0 20px;
     }
     .carte-box {
@@ -71,23 +59,45 @@
 
     .infos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 18px;
       margin-top: 26px;
     }
     .carte-info {
       background: #fff;
       border-radius: 14px;
-      padding: 20px 22px;
+      padding: 22px 24px;
       border-left: 5px solid var(--vert);
       box-shadow: 0 4px 14px rgba(0,0,0,.06);
     }
-    .carte-info h3 {
-      margin: 0 0 6px;
-      color: var(--vert);
-      font-size: 1.05rem;
+    .carte-info h3 { margin: 0 0 8px; color: var(--vert); font-size: 1.05rem; }
+    .carte-info p  { margin: 0; color: var(--gris); font-size: .95rem; }
+
+    /* ---------- Boutons ---------- */
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 10px 20px;
+      background: var(--vert);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      border-radius: 8px;
+      transition: background .2s, transform .2s;
     }
-    .carte-info p { margin: 0; color: var(--gris); font-size: .95rem; }
+    .btn:hover { background: var(--vert-fonce); transform: translateY(-2px); }
+
+    .popup-titre { font-weight: 700; color: var(--vert); font-size: 1rem; margin-bottom: 2px; }
+    .popup-texte { font-size: .88rem; color: var(--texte); }
+    .popup-lien {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--vert);
+      text-decoration: none;
+    }
+    .popup-lien:hover { text-decoration: underline; }
 
     footer {
       text-align: center;
@@ -96,27 +106,17 @@
       padding: 0 20px 30px;
     }
 
-    /* ---------- Fenêtre contextuelle ---------- */
-    .popup-titre {
-      font-weight: 700;
-      color: var(--vert);
-      font-size: 1rem;
-      margin-bottom: 2px;
-    }
-    .popup-texte { font-size: .88rem; color: var(--texte); }
-
     @media (max-width: 600px) {
       #map { height: 420px; }
-      header { padding-bottom: 60px; }
+      header { padding-bottom: 70px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="badge">Cartographie web · Leaflet</div>
     <h1>Institut Agronomique et Vétérinaire Hassan II</h1>
-    <p>Localisation du site de l'IAV à Rabat, Maroc</p>
+    <p>Plan d'accès au campus de Madinat Al Irfane, Rabat</p>
   </header>
 
   <main>
@@ -126,38 +126,37 @@
 
     <section class="infos">
       <div class="carte-info">
-        <h3>📍 Localisation</h3>
-        <p>Campus de Madinat Al Irfane, Rabat, Maroc.</p>
+        <h3>📍 Adresse</h3>
+        <p>Campus de Madinat Al Irfane<br>Rabat, Maroc</p>
       </div>
       <div class="carte-info">
-        <h3>🗺️ Fonds de carte</h3>
-        <p>Choisissez entre le plan OpenStreetMap et l'imagerie satellite via le bouton en haut à droite de la carte.</p>
-      </div>
-      <div class="carte-info">
-        <h3>🖱️ Navigation</h3>
-        <p>Zoomez avec la molette ou les boutons +/−, et cliquez sur le repère pour afficher les informations.</p>
+        <h3>🧭 Itinéraire</h3>
+        <p>Calculez votre trajet depuis votre position avec Google Maps.</p>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=Institut+Agronomique+et+V%C3%A9t%C3%A9rinaire+Hassan+II+Rabat">
+          Ouvrir dans Google Maps
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    Carte réalisée avec Leaflet · Données © contributeurs OpenStreetMap
+    Institut Agronomique et Vétérinaire Hassan II · Rabat, Maroc
   </footer>
 
   <script>
     // Coordonnées de l'IAV Hassan II (Rabat) : [latitude, longitude]
     const iav = [33.9813, -6.864];
+    const lienGoogleMaps = 'https://www.google.com/maps/search/?api=1&query=Institut+Agronomique+et+V%C3%A9t%C3%A9rinaire+Hassan+II+Rabat';
 
-    // Création de la carte centrée sur l'IAV
     const map = L.map('map', { scrollWheelZoom: true }).setView(iav, 16);
 
-    // Fond 1 : OpenStreetMap
+    // Fonds de carte
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // Fond 2 : imagerie satellite Esri
     const satellite = L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 19,
@@ -165,7 +164,7 @@
     });
 
     L.control.layers(
-      { 'Plan OpenStreetMap': osm, 'Imagerie satellite': satellite },
+      { 'Plan': osm, 'Satellite': satellite },
       null,
       { position: 'topright' }
     ).addTo(map);
@@ -183,11 +182,11 @@
     L.marker(iav, { icon: icone }).addTo(map)
       .bindPopup(
         '<div class="popup-titre">IAV Hassan II</div>' +
-        '<div class="popup-texte">Institut Agronomique et Vétérinaire<br>Madinat Al Irfane, Rabat</div>'
+        '<div class="popup-texte">Institut Agronomique et Vétérinaire<br>Madinat Al Irfane, Rabat</div>' +
+        '<a class="popup-lien" target="_blank" rel="noopener" href="' + lienGoogleMaps + '">Itinéraire Google Maps →</a>'
       )
       .openPopup();
 
-    // Cercle d'emprise approximative du site
     L.circle(iav, {
       radius: 450,
       color: '#1f6b3a',
@@ -196,7 +195,6 @@
       fillOpacity: 0.12
     }).addTo(map);
 
-    // Échelle
     L.control.scale({ metric: true, imperial: false }).addTo(map);
   </script>
 </body>
