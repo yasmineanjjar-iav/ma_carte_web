@@ -3,127 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IAV Hassan II – Plan d'accès | Rabat</title>
-
+  <title>IAV Hassan II – Plan du campus | Rabat</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
   <style>
-    :root {
-      --vert: #1f6b3a;
-      --vert-fonce: #124a27;
-      --or: #c9a227;
-      --texte: #22302a;
-      --gris: #6b7a72;
-      --fond: #f4f7f5;
-    }
+    :root { --vert:#1f6b3a; --vert-fonce:#124a27; --or:#c9a227; --texte:#22302a; --gris:#6b7a72; --fond:#f4f7f5; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--fond);
-      color: var(--texte);
-      line-height: 1.6;
-    }
-
-    /* ---------- En-tête ---------- */
-    header {
-      background: linear-gradient(135deg, var(--vert-fonce), var(--vert));
-      color: #fff;
-      text-align: center;
-      padding: 48px 20px 80px;
-      border-bottom: 5px solid var(--or);
-    }
-    header h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: .3px; }
-    header p  { margin: 0; opacity: .92; font-size: 1.05rem; }
-
-    /* ---------- Contenu ---------- */
-    main {
-      max-width: 1100px;
-      margin: -50px auto 40px;
-      padding: 0 20px;
-    }
-    .carte-box {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(18, 74, 39, .18);
-      padding: 14px;
-    }
-    #map {
-      height: 560px;
-      width: 100%;
-      border-radius: 12px;
-    }
-
-    .infos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 26px;
-    }
-    .carte-info {
-      background: #fff;
-      border-radius: 14px;
-      padding: 22px 24px;
-      border-left: 5px solid var(--vert);
-      box-shadow: 0 4px 14px rgba(0,0,0,.06);
-    }
-    .carte-info h3 { margin: 0 0 8px; color: var(--vert); font-size: 1.05rem; }
-    .carte-info p  { margin: 0; color: var(--gris); font-size: .95rem; }
-
-    /* ---------- Boutons ---------- */
-    .btn {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 10px 20px;
-      background: var(--vert);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: .95rem;
-      border-radius: 8px;
-      transition: background .2s, transform .2s;
-    }
-    .btn:hover { background: var(--vert-fonce); transform: translateY(-2px); }
-
-    .popup-titre { font-weight: 700; color: var(--vert); font-size: 1rem; margin-bottom: 2px; }
-    .popup-texte { font-size: .88rem; color: var(--texte); }
-    .popup-lien {
-      display: inline-block;
-      margin-top: 8px;
-      font-weight: 600;
-      color: var(--vert);
-      text-decoration: none;
-    }
-    .popup-lien:hover { text-decoration: underline; }
-
-    footer {
-      text-align: center;
-      color: var(--gris);
-      font-size: .85rem;
-      padding: 0 20px 30px;
-    }
-
-    @media (max-width: 600px) {
-      #map { height: 420px; }
-      header { padding-bottom: 70px; }
-    }
+    body { margin:0; font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--fond); color:var(--texte); line-height:1.6; }
+    header { background:linear-gradient(135deg,var(--vert-fonce),var(--vert)); color:#fff; text-align:center; padding:48px 20px 80px; border-bottom:5px solid var(--or); }
+    header h1 { margin:0 0 8px; font-size:clamp(1.6rem,4vw,2.4rem); }
+    header p { margin:0; opacity:.92; font-size:1.05rem; }
+    main { max-width:1100px; margin:-50px auto 40px; padding:0 20px; }
+    .carte-box { background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(18,74,39,.18); padding:14px; }
+    #map { height:620px; width:100%; border-radius:12px; }
+    .infos { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; margin-top:26px; }
+    .carte-info { background:#fff; border-radius:14px; padding:22px 24px; border-left:5px solid var(--vert); box-shadow:0 4px 14px rgba(0,0,0,.06); }
+    .carte-info h3 { margin:0 0 8px; color:var(--vert); font-size:1.05rem; }
+    .carte-info p { margin:0; color:var(--gris); font-size:.95rem; }
+    .btn { display:inline-block; margin-top:14px; padding:10px 20px; background:var(--vert); color:#fff; text-decoration:none; font-weight:600; font-size:.95rem; border-radius:8px; transition:background .2s,transform .2s; }
+    .btn:hover { background:var(--vert-fonce); transform:translateY(-2px); }
+    .popup-titre { font-weight:700; color:var(--vert); font-size:1rem; }
+    .popup-cat { font-size:.78rem; color:var(--gris); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+    .popup-texte { font-size:.88rem; }
+    .popup-texte a { color:var(--vert); font-weight:600; }
+    .pastille { display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:6px; vertical-align:-1px; border:1px solid rgba(0,0,0,.25); }
+    footer { text-align:center; color:var(--gris); font-size:.85rem; padding:0 20px 30px; }
+    @media (max-width:600px) { #map { height:480px; } header { padding-bottom:70px; } }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Institut Agronomique et Vétérinaire Hassan II</h1>
-    <p>Plan d'accès au campus de Madinat Al Irfane, Rabat</p>
+    <p>Plan du campus de Madinat Al Irfane, Rabat</p>
   </header>
 
   <main>
-    <div class="carte-box">
-      <div id="map"></div>
-    </div>
-
+    <div class="carte-box"><div id="map"></div></div>
     <section class="infos">
       <div class="carte-info">
         <h3>📍 Adresse</h3>
@@ -132,70 +49,152 @@
       <div class="carte-info">
         <h3>🧭 Itinéraire</h3>
         <p>Calculez votre trajet depuis votre position avec Google Maps.</p>
-        <a class="btn" target="_blank" rel="noopener"
-           href="https://www.google.com/maps/search/?api=1&query=Institut+Agronomique+et+V%C3%A9t%C3%A9rinaire+Hassan+II+Rabat">
-          Ouvrir dans Google Maps
-        </a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Institut+Agronomique+et+V%C3%A9t%C3%A9rinaire+Hassan+II+Rabat">Ouvrir dans Google Maps</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    Institut Agronomique et Vétérinaire Hassan II · Rabat, Maroc
-  </footer>
+  <footer>Institut Agronomique et Vétérinaire Hassan II · Rabat, Maroc</footer>
 
   <script>
-    // Coordonnées de l'IAV Hassan II (Rabat) : [latitude, longitude]
     const iav = [33.9813, -6.864];
     const lienGoogleMaps = 'https://www.google.com/maps/search/?api=1&query=Institut+Agronomique+et+V%C3%A9t%C3%A9rinaire+Hassan+II+Rabat';
-
-    const map = L.map('map', { scrollWheelZoom: true }).setView(iav, 16);
+    const map = L.map('map').setView(iav, 16);
 
     // Fonds de carte
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-
-    const satellite = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 19,
-      attribution: 'Tuiles &copy; Esri'
+    const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19, attribution: 'Tuiles &copy; Esri'
     });
-
-    L.control.layers(
-      { 'Plan': osm, 'Satellite': satellite },
-      null,
-      { position: 'topright' }
-    ).addTo(map);
-
-    // Repère personnalisé
-    const icone = L.divIcon({
-      className: '',
-      html: '<div style="width:34px;height:34px;background:#1f6b3a;border:3px solid #fff;' +
-            'border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 8px rgba(0,0,0,.4);"></div>',
-      iconSize: [34, 34],
-      iconAnchor: [17, 34],
-      popupAnchor: [0, -34]
-    });
-
-    L.marker(iav, { icon: icone }).addTo(map)
-      .bindPopup(
-        '<div class="popup-titre">IAV Hassan II</div>' +
-        '<div class="popup-texte">Institut Agronomique et Vétérinaire<br>Madinat Al Irfane, Rabat</div>' +
-        '<a class="popup-lien" target="_blank" rel="noopener" href="' + lienGoogleMaps + '">Itinéraire Google Maps →</a>'
-      )
-      .openPopup();
-
-    L.circle(iav, {
-      radius: 450,
-      color: '#1f6b3a',
-      weight: 2,
-      fillColor: '#1f6b3a',
-      fillOpacity: 0.12
-    }).addTo(map);
-
+    const controle = L.control.layers({ 'Plan': osm, 'Satellite': satellite }, null, { position: 'topright' }).addTo(map);
     L.control.scale({ metric: true, imperial: false }).addTo(map);
+
+    // Ordre d'affichage des couches
+    [['zones',410],['arbres',415],['routes',420],['points',430]].forEach(([n,z]) => { map.createPane(n).style.zIndex = z; });
+
+    // Outils
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const sansAccent = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    // Lecture robuste (UTF-8, avec repli sur Windows-1252) pour éviter les accents abîmés
+    async function lireGeoJSON(url) {
+      const rep = await fetch(url);
+      if (!rep.ok) throw new Error(url + ' : erreur ' + rep.status);
+      const buf = await rep.arrayBuffer();
+      let texte = new TextDecoder('utf-8').decode(buf);
+      if (texte.includes('\uFFFD')) texte = new TextDecoder('windows-1252').decode(buf);
+      return JSON.parse(texte);
+    }
+
+    // Correction orthographique des libellés
+    const corrections = [['Pavillion','Pavillon'],['Amphithéàtre','Amphithéâtre'],['Epicerie','Épicerie'],
+                         ['Equestre','Équestre'],['Equitation','Équitation'],['Equine','Équine'],['Ecole','École']];
+    function nettoyer(nom) { return corrections.reduce((t, [a, b]) => t.split(a).join(b), nom || ''); }
+
+    // Catégories et couleurs
+    const couleurs = {
+      'Résidences':'#6a1b9a', 'Formation':'#1565c0', 'Restauration':'#ef6c00', 'Administration':'#37474f',
+      'Sport et loisirs':'#2e7d32', 'Amphithéâtres':'#00838f', 'Bibliothèques':'#f9a825', 'Santé':'#d81b60',
+      'Services':'#8d6e63', 'Parkings':'#546e7a', 'Autres':'#757575'
+    };
+    function categorie(p) {
+      if (p.icon_name === 'parking') return 'Parkings';
+      const d = sansAccent(p.department);
+      if (d === 'residence') return 'Résidences';
+      if (d === 'formation') return 'Formation';
+      if (d === 'restaurant' || d === 'buvette') return 'Restauration';
+      if (d === 'administration' || d === 'reunion') return 'Administration';
+      if (d === 'sport' || d === 'jeux') return 'Sport et loisirs';
+      if (d.startsWith('amphith')) return 'Amphithéâtres';
+      if (d === 'bibliotheque') return 'Bibliothèques';
+      if (d === 'sante') return 'Santé';
+      if (d === 'services' || d === 'divers') return 'Services';
+      return 'Autres';
+    }
+    const pastille = c => '<span class="pastille" style="background:' + c + '"></span>';
+
+    // Fenêtre d'information d'un point
+    function contenu(p, cat) {
+      let h = '<div class="popup-titre">' + esc(nettoyer(p.name)) + '</div>' +
+              '<div class="popup-cat">' + esc(cat) + '</div>';
+      if (p.mail) h += '<div class="popup-texte">✉️ <a href="mailto:' + esc(p.mail) + '">' + esc(p.mail) + '</a></div>';
+      if (p.brochure) h += '<div class="popup-texte">📄 ' + p.brochure + '</div>';
+      return h;
+    }
+
+    // Couche : espaces verts (polygones)
+    lireGeoJSON('data/iav_grass.geojson').then(d => {
+      const c = L.geoJSON(d, { pane: 'zones',
+        style: { color: '#2e7d32', weight: 1, fillColor: '#66bb6a', fillOpacity: 0.45 } }).addTo(map);
+      controle.addOverlay(c, pastille('#66bb6a') + 'Espaces verts');
+    }).catch(e => console.error(e));
+
+    // Couche : routes (lignes)
+    lireGeoJSON('data/iav_roads.geojson').then(d => {
+      const typeRoute = p => {
+        const t = sansAccent(p.category || p.grouping);
+        if (t.includes('piste')) return 'Piste';
+        if (t.includes('princip')) return 'Route principale';
+        return 'Route secondaire';
+      };
+      const c = L.geoJSON(d, { pane: 'routes',
+        style: f => {
+          const p = f.properties || {};
+          return { color: p.color || '#506475', weight: Number(p.width) || 4, opacity: 0.95,
+                   lineCap: 'round', lineJoin: 'round', dashArray: typeRoute(p) === 'Piste' ? '7 6' : null };
+        },
+        onEachFeature: (f, l) => l.bindTooltip(typeRoute(f.properties || {}), { sticky: true })
+      }).addTo(map);
+      controle.addOverlay(c, pastille('#506475') + 'Routes et pistes');
+    }).catch(e => console.error(e));
+
+    // Couche : points (lieux, arbres, entrée)
+    lireGeoJSON('data/iav_points.geojson').then(d => {
+      const groupes = {};
+      Object.keys(couleurs).forEach(k => groupes[k] = L.layerGroup().addTo(map));
+      const arbres = L.layerGroup();
+      const limites = L.latLngBounds();
+      let entree = null;
+
+      d.features.forEach(f => {
+        const p = f.properties || {};
+        const [lng, lat] = f.geometry.coordinates;
+        const nom = sansAccent(p.name);
+
+        if (nom === 'grass') return;                       // repères techniques : non affichés
+        if (nom === 'tree' || nom === 'palmier') {         // végétation : petits points
+          L.circleMarker([lat, lng], { pane: 'arbres', radius: nom === 'tree' ? 3 : 4, weight: 0,
+            fillColor: nom === 'tree' ? '#388e3c' : '#1b5e20', fillOpacity: 0.85, interactive: false }).addTo(arbres);
+          return;
+        }
+        if (p.icon_name === 'entrance') { entree = [lat, lng]; return; }
+
+        const cat = categorie(p);
+        L.circleMarker([lat, lng], { pane: 'points', radius: 8, color: '#fff', weight: 2,
+          fillColor: couleurs[cat], fillOpacity: 1 })
+          .bindTooltip(esc(nettoyer(p.name)))
+          .bindPopup(contenu(p, cat))
+          .addTo(groupes[cat]);
+        limites.extend([lat, lng]);
+      });
+
+      Object.keys(couleurs).forEach(k => {
+        if (groupes[k].getLayers().length) controle.addOverlay(groupes[k], pastille(couleurs[k]) + k);
+      });
+      controle.addOverlay(arbres, pastille('#388e3c') + 'Arbres et palmiers');
+
+      // Repère de l'entrée principale
+      const icone = L.divIcon({ className: '', iconSize: [34, 34], iconAnchor: [17, 34], popupAnchor: [0, -34],
+        html: '<div style="width:34px;height:34px;background:#c62828;border:3px solid #fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 8px rgba(0,0,0,.4);"></div>' });
+      L.marker(entree || iav, { icon: icone, zIndexOffset: 1000 }).addTo(map)
+        .bindPopup('<div class="popup-titre">Entrée principale</div><div class="popup-cat">IAV Hassan II</div>' +
+          '<div class="popup-texte"><a target="_blank" rel="noopener" href="' + lienGoogleMaps + '">Itinéraire Google Maps →</a></div>')
+        .openPopup();
+
+      if (limites.isValid()) map.fitBounds(limites.pad(0.08));
+    }).catch(e => console.error(e));
   </script>
 </body>
 </html>
